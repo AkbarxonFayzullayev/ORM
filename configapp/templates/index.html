@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add_news' %}">Yangilik Qo'shish</a>
@@ -34,7 +34,7 @@
 
 <div class="container mt-4">
     <!-- 🔍 Qidiruv formasi -->
-    <form method="GET" action="{% url 'index' %}" class="form-inline mb-4">
+    <form method="GET" action="{% url 'home' %}" class="form-inline mb-4">
         <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Qidiruv..." value="{{ query }}">
             <button type="submit" class="btn btn-primary">Qidirish</button>
