@@ -5,14 +5,20 @@ from .models import *
 from .forms import *
 
 def index(request):
-    news = News.objects.all()
-    categories = Categories.objects.all()
+    query = request.GET.get('q', '')  # Qidiruv so‘rovini olish
+    news = News.objects.all()  # Barcha yangiliklarni olish
+    categories = Categories.objects.all()  # Kategoriyalarni olish
+
+    if query:
+        news = news.filter(title__icontains=query)  # Foydalanuvchi kiritgan so‘zga mos yangiliklarni chiqarish
 
     context = {
-        "news":news,
-        "categories":categories,
+        "news": news,
+        "categories": categories,
+        "query": query
     }
-    return render(request,'index.html',context=context)
+    return render(request, 'index.html', context=context)
+
 def categories(request,category_id):
     news = News.objects.filter(category_id=category_id)
     categories = Categories.objects.all()
